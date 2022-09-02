@@ -46,9 +46,9 @@ The implementation should satisfy the following assumptions:
 
 You will test the correctness and performance of your implementations. Two test programs `test1.cpp` and `test2.cpp` and a Makefile are provided to build the executables test1 and test2 in a Linux environment. To build the executables `test1` and `test2`, type `make` at the command line, and then run each test.
 
-$ make
-$ ./test1
-$ ./test2
+    $ make
+    $ ./test1
+    $ ./test2
 
 1. The first program tests the correctness of the ReadyQueue implementation by adding and removing some PCBs. In this test, it assumes a PCB of ID i has an initial priority = i. For example, process 1 is assumed to have a priority of 1. Test1 performs the following sequence of operations:
 
