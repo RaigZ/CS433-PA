@@ -64,7 +64,7 @@ The output of your test1 should match what is in the "test1_out.txt" file.
 
 2. The second test evaluates the performance of your implementation. It creates a ReadyQueue q2, and 200 PCBs with random priority between 1 and 50 in a PCBTable. It then adds half of the PCBs randomly into q2. It then repeats the following steps 1,000,000 times and measures the total running time.
 
-With equal probability (50% chance), randomly decide either to remove a process from or insert a process into the ReadyQueue.
+- With equal probability (50% chance), randomly decide either to remove a process from or insert a process into the ReadyQueue.
 
 The final content of q2 of your test2 should match what is in the "test2_out.txt" file. Your choice of the data structure for implementing the ReadyQueue class would affect its performance. In the report, you should present and discuss your timing results and the data structure you used.
 
