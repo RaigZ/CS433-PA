@@ -25,10 +25,11 @@ In this assignment, you will implement some commonly used data structures in ope
 **PCB Table:** An array(list) of PCB elements. It contains all processes currently in the system.
 
 **ReadyQueue:** Ready queue is a queue of PCBs that are in the READY state, which are to be scheduled to run on the CPU. It is a priority queue such that the process (PCB) with the highest priority can be selected next. It should support at least the following member functions:
-**_addPCB:_** add a PCB into the ready
-**_removePCB:_** remove and return the PCB with the highest priority from the queue
-**_size:_** return the number of elements in the queue
-**_displayAll:_** Display the IDs and priorities of processes in the
+
+- **_addPCB:_** add a PCB into the ready
+- **_removePCB:_** remove and return the PCB with the highest priority from the queue
+- **_size:_** return the number of elements in the queue
+- **_displayAll:_** Display the IDs and priorities of processes in the
 
 Those classes have been defined in the starter code. You need to complete their implementations, i.e. all the "TODO"s in the code. Delete "TODO" from your code after completing them. You may add additional member functions to facilitate the implementations, but don't change the definitions of those given functions.
 
@@ -43,7 +44,7 @@ The implementation should satisfy the following assumptions:
 
 ## Testing
 
-You will test the correctness and performance of your implementations. Two test programs "test1.cpp" and "test2.cpp" and a Makefile are provided to build the executables test1 and test2 in a Linux environment. To build the executables test1 and test2, type make at the command line, and then run each test.
+You will test the correctness and performance of your implementations. Two test programs `test1.cpp` and `test2.cpp` and a Makefile are provided to build the executables test1 and test2 in a Linux environment. To build the executables `test1` and `test2`, type `make` at the command line, and then run each test.
 
 $ make
 $ ./test1
@@ -73,7 +74,7 @@ Your test2 should run correctly in under 1 second. You will get 5-point extra cr
 
 ## Submission
 
-You need to submit the following required source code files and the report file (in PDF format) for Assignment 1 on the GradeScope (Links to an external site.).
+You need to submit the following required source code files and the report file (in PDF format) for Assignment 1 on the [GradeScope](https://www.gradescope.com/courses/408289) (Links to an external site.).
 
 - pcb.h
 - pcbtable.h
