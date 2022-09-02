@@ -4,7 +4,7 @@ First, you should get the starter code for the assignment from the GitHub reposi
 
 ## Goal
 
-This assignment aims to help you review C/C++ data structures and familiarize you with Unix/Linux programming environment that is used in later assignments. If you are new to Linux programming and Makefile, read the introduction to Unix programming tools
+This assignment aims to help you review C/C++ data structures and familiarize you with Unix/Linux programming environment that is used in later assignments. If you are new to Linux programming and Makefile, read the introduction to [Unix programming tools](https://csusm.instructure.com/courses/2598/files/762648/download?wrap=1)
 
 ## Starter Code
 
