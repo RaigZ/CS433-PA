@@ -52,13 +52,13 @@ You will test the correctness and performance of your implementations. Two test 
 
 1. The first program tests the correctness of the ReadyQueue implementation by adding and removing some PCBs. In this test, it assumes a PCB of ID i has an initial priority = i. For example, process 1 is assumed to have a priority of 1. Test1 performs the following sequence of operations:
 
-1. create an empty ReadyQueu q1.
-1. add processes 15, 6, 23, 39, and 8 to q1. Display the content of q1.
-1. remove the process with the highest priority and display q1.
-1. add processes 47, 1, 37, and 5 into q1, and display.
-1. remove the process with the highest priority from and display q1.
-1. add processes 43, 17, 32, 12, and 19 to and display q1.
-1. One by one remove the process with the highest priority from q1 and display it after each removal.
+   1. create an empty ReadyQueu q1.
+   2. add processes 15, 6, 23, 39, and 8 to q1. Display the content of q1.
+   3. remove the process with the highest priority and display q1.
+   4. add processes 47, 1, 37, and 5 into q1, and display.
+   5. remove the process with the highest priority from and display q1.
+   6. add processes 43, 17, 32, 12, and 19 to and display q1.
+   7. One by one remove the process with the highest priority from q1 and display it after each removal.
 
 The output of your test1 should match what is in the "test1_out.txt" file.
 
