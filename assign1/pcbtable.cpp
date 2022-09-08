@@ -8,6 +8,8 @@
  */
 
 #include "pcbtable.h"
+#include "pcb.h"
+#include <vector>
 
 /**
  * @brief Construct a new PCBTable object of the given size (number of PCBs)
@@ -34,13 +36,16 @@ PCBTable::~PCBTable() {
  */
 PCB* PCBTable::getPCB(unsigned int idx) {
     // TODO: add your code here
+    return this->table.at(idx);
 }
 
 /**
  * @brief Add a PCB to the PCBTable.
  *
  * @param pcb: the PCB to add
+ * @param idx: the index to add the PCB at
  */
 void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
     // TODO: add your code here
+    this->table.push_back(pcb);
 }
