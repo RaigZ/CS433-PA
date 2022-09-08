@@ -1,5 +1,6 @@
 #include <iostream>
 #include "readyqueue.h"
+#include "pcb.h"
 
 using namespace std;
 
