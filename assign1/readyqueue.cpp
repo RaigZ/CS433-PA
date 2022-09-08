@@ -27,6 +27,7 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
     if(count >= MAX){
         cout << "Cannot add to full queue" << endl;
     } else {
+        pcbPtr->setState(ProcState::READY);
         Q[count] = pcbPtr;
         count += 1;
         trickleup();
@@ -41,6 +42,7 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
 PCB* ReadyQueue::removePCB() {
     //TODO: add your code here
     // When removing a PCB from the queue, you must change its state to RUNNING.
+    Q[0]->setState(ProcState::RUNNING);
     reheapify();
 }
 
