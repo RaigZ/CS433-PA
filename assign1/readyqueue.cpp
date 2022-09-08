@@ -41,6 +41,7 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
 PCB* ReadyQueue::removePCB() {
     //TODO: add your code here
     // When removing a PCB from the queue, you must change its state to RUNNING.
+    reheapify();
 }
 
 /**
@@ -58,6 +59,7 @@ int ReadyQueue::size() {
  */
 void ReadyQueue::displayAll() {
     //TODO: add your code here
+
     for(int i = 0; i < count; i++){
         cout << Q[i]->priority << " ";
     }
