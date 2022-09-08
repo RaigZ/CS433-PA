@@ -23,6 +23,13 @@ using namespace std;
 void ReadyQueue::addPCB(PCB *pcbPtr) {
     //TODO: add your code here
     // When adding a PCB to the queue, you must change its state to READY.
+    if(count >= MAX){
+        cout << "Cannot add to full queue" << endl;
+    } else {
+        Q[count] = pcbPtr;
+        count += 1;
+        trickleup();
+    }
 }
 
 /**
@@ -42,6 +49,7 @@ PCB* ReadyQueue::removePCB() {
  */
 int ReadyQueue::size() {
     //TODO: add your code here
+    return count;
 }
 
 /**
@@ -49,6 +57,10 @@ int ReadyQueue::size() {
  */
 void ReadyQueue::displayAll() {
     //TODO: add your code here
+    for(int i = 0; i < count; i++){
+        cout << Q[i]->priority << " ";
+    }
+    cout << endl;
 }
 
 void ReadyQueue::swap(PCB* a, PCB* b){

@@ -16,11 +16,13 @@
  * @brief A queue of PCB's that are in the READY state to be scheduled to run.
  * It should be a priority queue such that the process with the highest priority can be selected next.
  */
+
+int const MAX = 100;
 class ReadyQueue {
 private:
     // TODO: add your private member variables here
     // choose a data structure for the ReadyQueue. No STL class is allowed.
-    PCB* Q[100];
+    PCB* Q[MAX];
     int count = 0;
 public:
     /**
