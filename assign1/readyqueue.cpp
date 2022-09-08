@@ -119,6 +119,6 @@ int ReadyQueue::getParent(int i){
         return (i - 1) / 2 - 1;
 }
 
-bool even(int num){
+bool ReadyQueue::even(int num){
     return (num % 2 == 0);
 }
