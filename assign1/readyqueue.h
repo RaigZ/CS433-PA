@@ -20,7 +20,8 @@ class ReadyQueue {
 private:
     // TODO: add your private member variables here
     // choose a data structure for the ReadyQueue. No STL class is allowed.
-
+    PCB* Q[100];
+    int count = 0;
 public:
     /**
      * @brief Construct a new ReadyQueue object
@@ -60,5 +61,16 @@ public:
       * @brief Display the PCBs in the queue.
       */
 	void displayAll();
+    
+    // Utility functions
+
+    void swap(PCB*, PCB*);
+    void reheapify();  // reheapify after printing
+        // - involves moving the last job to the front and trickling down
+    int  getLargerchild(int);  // return location of the smaller child
+                    //- compares L and R children of the given location
+    void trickleup();    // trickling up after adding at the rear
+    int getParent(int);  // return the parent location given the child loc
+    bool even(int);      // is the number even?  Needed to find the parent
 
 };

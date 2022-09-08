@@ -12,6 +12,7 @@ using namespace std;
  */
  ReadyQueue::ReadyQueue()  {
      //TODO: add your code here
+     count = 0;
  }
 
 /**
@@ -48,4 +49,63 @@ int ReadyQueue::size() {
  */
 void ReadyQueue::displayAll() {
     //TODO: add your code here
+}
+
+void ReadyQueue::swap(PCB* a, PCB* b){
+    PCB* temp = a;
+    a = b;
+    b = temp;
+}
+
+void ReadyQueue::reheapify(){
+    int X = 0;
+    Q[X] = Q[count - 1];
+    count--;
+
+    while(X < count - 1){
+        int largerChild = getLargerchild(X);
+
+        if (largerChild == -1 || Q[largerChild] > Q[X])
+            break;
+
+        X = largerChild;
+        swap(Q[X], Q[getParent(X)]);
+    }
+}
+
+int ReadyQueue::getLargerchild(int i){
+    int LC = 2 * i + 1;
+    int RC = 2 * i + 2;
+
+    if (LC > count - 1) 
+        return -1;
+    if (RC > count - 1) 
+        return -1;
+    
+    if (Q[LC]->priority > Q[RC]->priority)
+        return LC;
+    else
+        return RC;
+}
+
+void ReadyQueue::trickleup(){
+    int X = count - 1;
+
+    while (X > 0){
+        if(Q[getParent(X)]->priority < Q[X]->priority){
+            swap(Q[getParent(X)], Q[X]);
+        }
+        X = getParent(X);
+    }
+}
+
+int ReadyQueue::getParent(int i){
+    if (even(i))
+        return (i - 1) / 2;
+    else
+        return (i - 1) / 2 - 1;
+}
+
+bool even(int num){
+    return (num % 2 == 0);
 }
