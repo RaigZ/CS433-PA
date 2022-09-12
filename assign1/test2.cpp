@@ -44,13 +44,11 @@ int main(int argc, char *argv[]) {
         int x = rand();
         if (x % 2 == 0) {
             // Remove a proc from ReadyQueue
-            cout << "Current Size: " << q2.size() << "Remove " << endl;
             if (q2.size() > 0) {
                 q2.removePCB();
             }
         } else {
             // Add a PCB into ReadyQueue
-            cout << "Current Size: " << q2.size() << "Add " << endl;
             idx = rand() % size;
             if (table.getPCB(idx)->getState() !=
                 ProcState::READY) { // if the PCB is not in READY state, add it into ReadyQueue

@@ -115,7 +115,6 @@ void ReadyQueue::heapifyUp()
 
 void ReadyQueue::heapifyDown()
 {
-    cout << "Display Processes in ReadyQueue: " << endl;
     int idx = 0;
 
     while (leftChild(idx) < count)
