@@ -33,8 +33,8 @@ void ReadyQueue::addPCB(PCB *pcbPtr)
     {
         pcbPtr->setState(ProcState::READY);
         Q[count] = pcbPtr;
-        count += 1;
-        trickleup();
+        count++;
+        heapifyUp();
     }
 }
 
@@ -47,8 +47,12 @@ PCB *ReadyQueue::removePCB()
 {
     // TODO: add your code here
     //  When removing a PCB from the queue, you must change its state to RUNNING.
-    Q[0]->setState(ProcState::RUNNING);
-    reheapify();
+    PCB *pcb = Q[0];
+    pcb->setState(ProcState::RUNNING);
+    Q[0] = Q[count - 1];
+    count--;
+    heapifyDown();
+    return pcb;
 }
 
 /**
@@ -72,74 +76,64 @@ void ReadyQueue::displayAll()
     for (int i = 0; i < count; i++)
     {
         PCB *currentPCB = Q[i];
-        cout << "ID: " << currentPCB->getID() << ", Priority: " << currentPCB->getPriority() << ", State: " << endl; // << currentPCB->getState() << endl;
+        currentPCB->display();
     }
 }
 
-void ReadyQueue::swap(PCB *a, PCB *b)
+void ReadyQueue::swap(int a, int b)
 {
-    PCB *temp = a;
-    a = b;
-    b = temp;
+    PCB *temp = Q[a];
+    Q[a] = Q[b];
+    Q[b] = temp;
 }
 
-void ReadyQueue::reheapify()
+int ReadyQueue::getParent(int idx)
 {
-    int X = 0;
-    Q[X] = Q[count - 1];
-    count--;
+    return (idx - 1) / 2;
+}
 
-    while (X < count - 1)
+int ReadyQueue::leftChild(int idx)
+{
+    return 2 * idx + 1;
+}
+
+int ReadyQueue::rightChild(int idx)
+{
+    return 2 * idx + 2;
+}
+
+void ReadyQueue::heapifyUp()
+{
+    int idx = count - 1;
+
+    while (getParent(idx) >= 0 && Q[getParent(idx)]->priority < Q[idx]->priority)
     {
-        int largerChild = getLargerchild(X);
-
-        if (largerChild == -1 || Q[largerChild] > Q[X])
-            break;
-
-        X = largerChild;
-        swap(Q[X], Q[getParent(X)]);
+        swap(idx, getParent(idx));
+        idx = getParent(idx);
     }
 }
 
-int ReadyQueue::getLargerchild(int i)
+void ReadyQueue::heapifyDown()
 {
-    int LC = 2 * i + 1;
-    int RC = 2 * i + 2;
+    cout << "Display Processes in ReadyQueue: " << endl;
+    int idx = 0;
 
-    if (LC > count - 1)
-        return -1;
-    if (RC > count - 1)
-        return -1;
-
-    if (Q[LC]->priority > Q[RC]->priority)
-        return LC;
-    else
-        return RC;
-}
-
-void ReadyQueue::trickleup()
-{
-    int X = count - 1;
-
-    while (X > 0)
+    while (leftChild(idx) < count)
     {
-        if (Q[getParent(X)]->priority < Q[X]->priority)
+        int larger = leftChild(idx);
+        if (rightChild(idx) < count && Q[rightChild(idx)]->priority > Q[leftChild(idx)]->priority)
         {
-            swap(Q[getParent(X)], Q[X]);
+            larger = rightChild(idx);
         }
-        X = getParent(X);
+
+        if (Q[idx]->priority > Q[larger]->priority)
+        {
+            break;
+        }
+        else
+        {
+            swap(idx, larger);
+        }
+        idx = larger;
     }
-}
-
-int ReadyQueue::getParent(int i)
-{
-    if (even(i))
-        return (i - 1) / 2;
-    else
-        return (i - 1) / 2 - 1;
-}
-
-bool ReadyQueue::even(int num)
-{
-    return (num % 2 == 0);
 }

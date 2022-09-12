@@ -17,7 +17,7 @@
  * It should be a priority queue such that the process with the highest priority can be selected next.
  */
 
-int const MAX = 100;
+int const MAX = 100000;
 class ReadyQueue {
 private:
     // TODO: add your private member variables here
@@ -66,13 +66,14 @@ public:
     
     // Utility functions
 
-    void swap(PCB*, PCB*);
-    void reheapify();  // reheapify after printing
-        // - involves moving the last job to the front and trickling down
-    int  getLargerchild(int);  // return location of the smaller child
-                    //- compares L and R children of the given location
-    void trickleup();    // trickling up after adding at the rear
-    int getParent(int);  // return the parent location given the child loc
-    bool even(int);      // is the number even?  Needed to find the parent
+    void swap(int, int);
+
+    int getParent(int);
+    int leftChild(int);
+    int rightChild(int);
+
+    void heapifyUp();
+    void heapifyDown();
+
 
 };
