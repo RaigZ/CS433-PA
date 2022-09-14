@@ -16,16 +16,18 @@
  *
  * @param size: the capacity of the PCBTable
  */
-PCBTable::PCBTable(int size) {
-   // TODO: add your code here
+PCBTable::PCBTable(int size)
+{
+    // TODO: add your code here
 }
 
 /**
  * @brief Destroy the PCBTable object. Make sure to delete all the PCBs in the table.
  *
  */
-PCBTable::~PCBTable() {
-   // TODO: add your code here
+PCBTable::~PCBTable()
+{
+    // TODO: add your code here
 }
 
 /**
@@ -34,8 +36,8 @@ PCBTable::~PCBTable() {
  * @param idx: the index of the PCB to get
  * @return PCB*: pointer to the PCB at index "idx"
  */
-PCB* PCBTable::getPCB(unsigned int idx) {
-    // TODO: add your code here
+PCB *PCBTable::getPCB(unsigned int idx)
+{
     return this->table.at(idx);
 }
 
@@ -45,7 +47,7 @@ PCB* PCBTable::getPCB(unsigned int idx) {
  * @param pcb: the PCB to add
  * @param idx: the index to add the PCB at
  */
-void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
-    // TODO: add your code here
+void PCBTable::addPCB(PCB *pcb, unsigned int idx)
+{
     this->table.push_back(pcb);
 }

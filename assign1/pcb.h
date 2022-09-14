@@ -5,8 +5,8 @@
  * @brief This is the header file for the PCB class, a process control block.
  * @version 0.1
  */
-//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
-// Remember to addPCB sufficient comments to your code
+// You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
+//  Remember to addPCB sufficient comments to your code
 
 #pragma once
 #include <iostream>
@@ -14,7 +14,14 @@ using namespace std;
 
 // enum class of process state
 // A process (PCB) in ready queue should be in READY state
-enum class ProcState {NEW, READY, RUNNING, WAITING, TERMINATED};
+enum class ProcState
+{
+    NEW,
+    READY,
+    RUNNING,
+    WAITING,
+    TERMINATED
+};
 
 /**
  * @brief A process control block (PCB) Process control block(PCB) is a data structure representing a process in the system.
@@ -22,23 +29,25 @@ enum class ProcState {NEW, READY, RUNNING, WAITING, TERMINATED};
    It may also have other attributes, such as scheduling information (e.g. priority)
  *
  */
-class PCB {
+class PCB
+{
 public:
     // The unique process ID
-	unsigned int id;
+    unsigned int id;
     // The priority of a process valued between 1-50. Larger number represents higher priority
-	unsigned int priority;
-	// The current state of the process.
-	// A process in the ReadyQueue should be in READY state
-	ProcState state;
+    unsigned int priority;
+    // The current state of the process.
+    // A process in the ReadyQueue should be in READY state
+    ProcState state;
 
-	/**
-	 * @brief Construct a new PCB object
-	 * @param id: each process has a unique ID
-	 * @param priority: the priority of the process in the range 1-50. Larger number represents higher priority
-	 * @param state the state of the process.
+    /**
+     * @brief Construct a new PCB object
+     * @param id: each process has a unique ID
+     * @param priority: the priority of the process in the range 1-50. Larger number represents higher priority
+     * @param state the state of the process.
      */
-    PCB(unsigned int id = 0, unsigned int priority = 1, ProcState state = ProcState::NEW) {
+    PCB(unsigned int id = 0, unsigned int priority = 1, ProcState state = ProcState::NEW)
+    {
         this->id = id;
         this->priority = priority;
         this->state = state;
@@ -55,7 +64,8 @@ public:
      *
      * @return unsigned int: the ID of the PCB
      */
-    unsigned int getID() {
+    unsigned int getID()
+    {
         return id;
     }
 
@@ -64,7 +74,8 @@ public:
      *
      * @return unsigned int: the priority of the PCB
      */
-    unsigned int getPriority() {
+    unsigned int getPriority()
+    {
         return priority;
     }
 
@@ -73,7 +84,8 @@ public:
      *
      * @return ProcState: the state of the PCB
      */
-    ProcState getState() {
+    ProcState getState()
+    {
         return state;
     }
 
@@ -81,7 +93,8 @@ public:
      * @brief Change the state of the PCB.
      * @param state
      */
-    void setState(ProcState state) {
+    void setState(ProcState state)
+    {
         // TODO: add your code here
         this->state = state;
     }
@@ -90,8 +103,8 @@ public:
      * @brief Change the priority of the PCB.
      * @param priority
      */
-    void setPriority(unsigned int priority) {
-        // TODO: add your code here
+    void setPriority(unsigned int priority)
+    {
         this->priority = priority;
     }
 
@@ -99,27 +112,29 @@ public:
      * @brief Print the PCB.
      *
      */
-    void display() const {
+    void display() const
+    {
         cout << "ID: " << id;
         cout << ", Priority: " << priority;
-        cout << ", State: " ;
-        switch(state) {
-            case ProcState::NEW:
-                cout << "NEW";
-                break;
-            case ProcState::READY:
-                cout << "READY";
-                break;
-            case ProcState::RUNNING:
-                cout << "RUNNING";
-                break;
-            case ProcState::WAITING:
-                cout << "WAITING";
-                break;
-            case ProcState::TERMINATED:
-                cout << "TERMINATED";
-                break;
-        } 
+        cout << ", State: ";
+        switch (state)
+        {
+        case ProcState::NEW:
+            cout << "NEW";
+            break;
+        case ProcState::READY:
+            cout << "READY";
+            break;
+        case ProcState::RUNNING:
+            cout << "RUNNING";
+            break;
+        case ProcState::WAITING:
+            cout << "WAITING";
+            break;
+        case ProcState::TERMINATED:
+            cout << "TERMINATED";
+            break;
+        }
         cout << endl;
     }
 };
