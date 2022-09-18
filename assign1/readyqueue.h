@@ -22,8 +22,8 @@ class ReadyQueue
 {
 private:
     // choose a data structure for the ReadyQueue. No STL class is allowed.
-    PCB *Q[MAX];
-    int count = 0;
+    PCB *Q[MAX] {};
+    int count;
 
 public:
     /**

@@ -22,6 +22,7 @@ private:
     // TODO: add your private member variables here
     // choose a data structure for the PCBTable. You can use an array of PCB pointers, e.g. vector<PCB *>.
     vector<PCB *> table;
+    int size;
 
 public:
     /**
@@ -72,7 +73,7 @@ public:
      */
     void addNewPCB(unsigned int pid, unsigned int priority, unsigned int idx)
     {
-        PCB *pcb = new PCB(pid, priority);
+        PCB *pcb = new PCB(pid - 1, priority - 1);
         addPCB(pcb, idx);
     }
 };

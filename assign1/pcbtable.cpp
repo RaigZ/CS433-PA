@@ -19,6 +19,7 @@
 PCBTable::PCBTable(int size)
 {
     // TODO: add your code here
+    this->size = size;
 }
 
 /**
@@ -38,7 +39,7 @@ PCBTable::~PCBTable()
  */
 PCB *PCBTable::getPCB(unsigned int idx)
 {
-    return this->table.at(idx);
+    return this->table.at(idx - 1);
 }
 
 /**

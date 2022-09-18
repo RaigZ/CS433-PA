@@ -13,7 +13,7 @@ using namespace std;
 ReadyQueue::ReadyQueue()
 {
     // TODO: add your code here
-    count = 0;
+    this->count = 0;
 }
 
 /**
