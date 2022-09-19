@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
         if (rand() % 2 == 0) q2.addPCB(pcbPtr);
     }
     cout << "ReadyQueue size = " << q2.size() << endl;
-    //q2.display();
+    // q2.displayAll();
     auto t1 = std::chrono::high_resolution_clock::now();
     int idx = 0;
     for (int i = 0; i < 1000000; i++) {
