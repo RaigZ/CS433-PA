@@ -31,10 +31,10 @@ PCBTable::~PCBTable()
 {
     // TODO: add your code here
     for(long unsigned int i = 0; i < this->table.size(); i++) {
-    	delete table.at(i);
+    	delete this->table.at(i);
     }
     
-    table.clear();
+    this->table.clear();
 }
 
 /**
