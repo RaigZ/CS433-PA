@@ -30,6 +30,10 @@ PCBTable::PCBTable(int size)
 PCBTable::~PCBTable()
 {
     // TODO: add your code here
+    for(long unsigned int i = 0; i < this->table.size(); i++) {
+    	delete table.at(i);
+    }
+    
     table.clear();
 }
 
