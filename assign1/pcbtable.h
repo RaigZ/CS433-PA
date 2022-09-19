@@ -73,7 +73,7 @@ public:
      */
     void addNewPCB(unsigned int pid, unsigned int priority, unsigned int idx)
     {
-        PCB *pcb = new PCB(pid, priority);
+        PCB *pcb = new PCB(pid - 1, priority - 1);
         addPCB(pcb, idx);
     }
 };
