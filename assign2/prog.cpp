@@ -35,10 +35,11 @@ int parse_command(char command[], char *args[])
     int number_of_tokens = 0;
 
     while(token){
-        args[number_of_tokens] = token;
-        token = strtok(NULL, " ")
+        args[number_of_tokens] = strdup(token);
+        token = strtok(NULL, " ");
         number_of_tokens += 1;
     }
+    args[number_of_tokens] = NULL;
     return number_of_tokens;
 }
 
@@ -74,6 +75,15 @@ int main(int argc, char *argv[])
          * (2) the child process will invoke execvp()
          * (3) parent will invoke wait() unless command included &
          */
+        int rc = fork();
+        if (rc < 0){
+            fprintf(stderr, "fork failed\n");
+            exit(1);
+        } else if (rc == 0){
+            execvp(args[0], args);
+        } else {
+            int wc = wait(NULL);
+        }
     }
     return 0;
 }
