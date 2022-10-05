@@ -36,7 +36,7 @@ int parse_command(char command[], char *args[])
 
     while(token){
         args[number_of_tokens] = strdup(token);
-        token = strtok(NULL, " ");
+        token = strtok(NULL, " \n");
         number_of_tokens += 1;
     }
     args[number_of_tokens] = NULL;
