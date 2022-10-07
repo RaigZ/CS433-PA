@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 
 
         if (strncmp(command, "!!", 2) == 0){
-            // if previous_command
+            // TODO: Need to check if there are no previous commands
             copy(begin(previous_command), end(previous_command), begin(command));
             cout << command << endl;
         } else {
@@ -99,6 +99,7 @@ int main(int argc, char *argv[])
             fprintf(stderr, "fork failed\n");
             exit(1);
         } else if (rc == 0){
+            // TODO: Need to add error handling for incorrect commands
             execvp(args[0], args);
         } else {
             int wc = wait(NULL);
