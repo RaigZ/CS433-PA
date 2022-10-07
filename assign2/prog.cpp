@@ -31,7 +31,7 @@ using namespace std;
 int parse_command(char command[], char *args[])
 {
     // TODO: implement this function
-    char *token = strtok(command, " ");
+    char *token = strtok(command, " \n");
     int number_of_tokens = 0;
 
     while(token){
@@ -59,14 +59,27 @@ int main(int argc, char *argv[])
 
     // TODO: Add additional variables for the implementation.
 
+    char previous_command[MAX_LINE];
+
     while (should_run)
     {
         printf("osh>");
         fflush(stdout);
         // Read the input command
         fgets(command, MAX_LINE, stdin);
+
+
+        if (strncmp(command, "!!", 2) == 0){
+            // if previous_command
+            copy(begin(previous_command), end(previous_command), begin(command));
+            cout << command << endl;
+        } else {
+            copy(begin(command), end(command), begin(previous_command));
+        }
+
         // Parse the input command
         int num_args = parse_command(command, args);
+
 
         // TODO: Add your code for the implementation
         /**
@@ -75,6 +88,12 @@ int main(int argc, char *argv[])
          * (2) the child process will invoke execvp()
          * (3) parent will invoke wait() unless command included &
          */
+
+        if (strncmp(command, "exit", 4) == 0){
+            should_run = 0;
+            exit(0);
+        }
+
         int rc = fork();
         if (rc < 0){
             fprintf(stderr, "fork failed\n");
