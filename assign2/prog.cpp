@@ -2,7 +2,7 @@
 /**
  * Assignment 2: Simple UNIX Shell
  * @file pcbtable.h
- * @author Edgar Del Valle and Ragir Zebari 
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief This is the main function of a simple UNIX Shell. You may add additional functions in this file for your implementation
  * @version 0.1
  */
@@ -44,7 +44,7 @@ int parse_command(char command[], char *args[])
 }
 /*void processLess(char *args[]) {
     args[num_args - 2] = NULL; //set the < to NULL so the command can be run
-    int inside = open(args[num_args-1], O_RDONLY); 
+    int inside = open(args[num_args-1], O_RDONLY);
     dup2(inside, STDIN_FILENO);
     close(inside);
 } */
@@ -99,19 +99,27 @@ int main(int argc, char *argv[])
             args[num_args - 1] = NULL; // set the & to NULL so the command can be executed
             run_concurrently = true;
         }
+        else
+        {
+            run_concurrently = false;
+        }
         if (args[num_args - 2] == string("<"))
         {
-            args[num_args - 2] = NULL; //set the < to NULL so the command can be executed
+            args[num_args - 2] = NULL; // set the < to NULL so the command can be executed
             run_concurrently = true;
-            int in = open(args[num_args - 1], O_RDONLY); 
+            int in = open(args[num_args - 1], O_RDONLY);
             dup2(in, STDIN_FILENO);
             close(in);
         }
-        if (args[num_args - 2] == string(">")) 
+        else
         {
-            args[num_args - 2] = NULL; //set the > to NULL so the command can be executed
+            run_concurrently = false;
+        }
+        if (args[num_args - 2] == string(">"))
+        {
+            args[num_args - 2] = NULL; // set the > to NULL so the command can be executed
             run_concurrently = true;
-            int out = open(args[num_args - 1],O_WRONLY); 
+            int out = open(args[num_args - 1], O_WRONLY);
             dup2(out, STDOUT_FILENO);
             close(out);
         }
