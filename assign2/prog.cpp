@@ -31,9 +31,18 @@ using namespace std;
 int parse_command(char command[], char *args[])
 {
     // TODO: implement this function
-}
+    char *token = strtok(command, " \n");
+    int number_of_tokens = 0;
 
-// TODO: Add additional functions if you need
+    while (token)
+    {
+        args[number_of_tokens] = strdup(token);
+        token = strtok(NULL, " \n");
+        number_of_tokens += 1;
+    }
+    args[number_of_tokens] = NULL;
+    return number_of_tokens;
+}
 
 /**
  * @brief The main function of a simple UNIX Shell. You may add additional functions in this file for your implementation
@@ -47,7 +56,9 @@ int main(int argc, char *argv[])
     char *args[MAX_LINE / 2 + 1]; // parsed out command line arguments
     int should_run = 1;           /* flag to determine when to exit program */
 
-    // TODO: Add additional variables for the implementation.
+    char previous_command[MAX_LINE];
+    bool prev_command_exists = false;
+    bool run_concurrently = false;
 
     while (should_run)
     {
@@ -55,8 +66,38 @@ int main(int argc, char *argv[])
         fflush(stdout);
         // Read the input command
         fgets(command, MAX_LINE, stdin);
+
+        if (strncmp(command, "!!", 2) == 0)
+        {
+            // TODO: Need to check if there are no previous commands
+            if (!prev_command_exists)
+            {
+                cout << "No command history found." << endl;
+            }
+            else
+            {
+                copy(begin(previous_command), end(previous_command), begin(command));
+                cout << command;
+            }
+        }
+        else
+        {
+            prev_command_exists = true;
+            copy(begin(command), end(command), begin(previous_command));
+        }
+
         // Parse the input command
         int num_args = parse_command(command, args);
+
+        if (args[num_args - 1] == string("&"))
+        {
+            args[num_args - 1] = NULL;
+            run_concurrently = true;
+        }
+        else
+        {
+            run_concurrently = false;
+        }
 
         // TODO: Add your code for the implementation
         /**
@@ -65,6 +106,31 @@ int main(int argc, char *argv[])
          * (2) the child process will invoke execvp()
          * (3) parent will invoke wait() unless command included &
          */
+
+        if (strncmp(command, "exit", 4) == 0)
+        {
+            should_run = 0;
+            exit(0);
+        }
+
+        int rc = fork();
+        if (rc < 0)
+        {
+            fprintf(stderr, "fork failed\n");
+            exit(1);
+        }
+        else if (rc == 0)
+        {
+            // TODO: Need to add error handling for incorrect commands
+            execvp(args[0], args);
+        }
+        else
+        {
+            if (run_concurrently == false)
+            {
+                wait(NULL);
+            }
+        }
     }
     return 0;
 }
