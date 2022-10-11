@@ -1,0 +1,9 @@
+osh>total 196
+drwxrwxr-x 2 ragir ragir  4096 Oct 10 18:57 .
+drwxrwxr-x 8 ragir ragir  4096 Oct 10 17:36 ..
+-rw-rw-r-- 1 ragir ragir     4 Oct 10 18:58 example.txt
+-rw-rw-r-- 1 ragir ragir   752 Oct 10 17:34 Makefile
+-rwxrwxr-x 1 ragir ragir 71816 Oct 10 18:57 prog2
+-rw-rw-r-- 1 ragir ragir  4600 Oct 10 18:57 prog.cpp
+-rw-rw-r-- 1 ragir ragir 97944 Oct 10 18:57 prog.o
+-rw-rw-r-- 1 ragir ragir   607 Oct 10 17:34 README.md

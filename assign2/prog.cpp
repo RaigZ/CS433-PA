@@ -2,11 +2,10 @@
 /**
  * Assignment 2: Simple UNIX Shell
  * @file pcbtable.h
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari 
  * @brief This is the main function of a simple UNIX Shell. You may add additional functions in this file for your implementation
  * @version 0.1
  */
-// You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
 // Remember to add sufficient and clear comments to your code
 
 #include <stdio.h>
@@ -43,6 +42,12 @@ int parse_command(char command[], char *args[])
     args[number_of_tokens] = NULL;
     return number_of_tokens;
 }
+/*void processLess(char *args[]) {
+    args[num_args - 2] = NULL; //set the < to NULL so the command can be run
+    int inside = open(args[num_args-1], O_RDONLY); 
+    dup2(inside, STDIN_FILENO);
+    close(inside);
+} */
 
 /**
  * @brief The main function of a simple UNIX Shell. You may add additional functions in this file for your implementation
@@ -91,8 +96,24 @@ int main(int argc, char *argv[])
 
         if (args[num_args - 1] == string("&"))
         {
-            args[num_args - 1] = NULL;
+            args[num_args - 1] = NULL; // set the & to NULL so the command can be executed
             run_concurrently = true;
+        }
+        if (args[num_args - 2] == string("<"))
+        {
+            args[num_args - 2] = NULL; //set the < to NULL so the command can be executed
+            run_concurrently = true;
+            int in = open(args[num_args - 1], O_RDONLY); 
+            dup2(in, STDIN_FILENO);
+            close(in);
+        }
+        if (args[num_args - 2] == string(">")) 
+        {
+            args[num_args - 2] = NULL; //set the > to NULL so the command can be executed
+            run_concurrently = true;
+            int out = open(args[num_args - 1],O_WRONLY); 
+            dup2(out, STDOUT_FILENO);
+            close(out);
         }
         else
         {
