@@ -13,10 +13,23 @@
 #define ASSIGN3_SCHEDULER_PRIORITY_H
 
 #include "scheduler.h"
+#include <queue>
+
+struct pcb_stat {
+  string id;
+  int tat;
+  int wt;
+};
 
 class SchedulerPriority : public Scheduler {
 private:
     // TODO: add necessary member variables here for your implementation
+    vector<pcb_stat> stats;
+    queue<PCB> process_queue;
+    int current_time = 0;
+
+    int sum_waiting_time = 0;
+    int sum_turn_around_time = 0;
 
 public:
     /**
