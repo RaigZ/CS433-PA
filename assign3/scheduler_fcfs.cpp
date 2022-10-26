@@ -35,7 +35,7 @@ void SchedulerFCFS::print_results() {
     sum_waiting_time += stats[i].wt;
     sum_turn_around_time += stats[i].tat;
   }
-  std::cout << "Average turn-around time = " << sum_turn_around_time * 1.0 / stats.size() << ", Average waiting time = " << sum_waiting_time * 1.0 / stats.size(); << std::endl;
+  std::cout << "Average turn-around time = " << sum_turn_around_time * 1.0 / stats.size() << ", Average waiting time = " << sum_waiting_time * 1.0 / stats.size() << std::endl;
 }
 
 void SchedulerFCFS::simulate(){

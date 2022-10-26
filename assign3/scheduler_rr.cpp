@@ -1,7 +1,7 @@
 /**
 * Assignment 3: CPU Scheduler
  * @file scheduler_rr.h
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief This Scheduler class implements the RoundRobin (RR) scheduling algorithm.
  * @version 0.1
  */
