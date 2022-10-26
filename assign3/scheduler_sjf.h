@@ -1,7 +1,7 @@
 /**
 * Assignment 3: CPU Scheduler
  * @file scheduler_fcfs.h
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief This Scheduler class implements the SJF scheduling algorithm.
  * @version 0.1
  */
@@ -12,10 +12,23 @@
 #define ASSIGN3_SCHEDULER_SJF_H
 
 #include "scheduler.h"
+#include <queue>
+
+struct pcb_stat {
+  string id;
+  int tat;
+  int wt;
+};
 
 class SchedulerSJF : public Scheduler {
 private:
     // TODO: add necessary member variables here for your implementation
+    vector<pcb_stat> stats;
+    queue<PCB> process_queue;
+    int current_time = 0;
+
+    int sum_waiting_time = 0;
+    int sum_turn_around_time = 0;
 
 public:
     /**
