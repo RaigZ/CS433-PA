@@ -29,6 +29,13 @@ private:
     vector<pcb_stat> stats;
     queue<PCB> process_queue;
     int current_time = 0;
+
+    int sum_waiting_time = 0;
+    double average_waiting_time = 0;
+
+    int sum_turn_around_time = 0;
+    double average_turn_around_time = 0;
+
 public:
     /**
      * @brief Construct a new SchedulerFCFS object
