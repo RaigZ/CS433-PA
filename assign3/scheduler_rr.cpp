@@ -14,8 +14,9 @@
 // TODO: add implementation of SchedulerRR constructor, destrcutor and
 // member functions init, print_results, and simulate here
 
-SchedulerRR::SchedulerRR(int time_quantum = 10)
+SchedulerRR::SchedulerRR(int time_quantum)
 {
+  this->time_quantum = time_quantum;
 }
 
 SchedulerRR::~SchedulerRR()
@@ -48,7 +49,12 @@ void SchedulerRR::simulate()
     PCB current = process_queue.front();
     struct pcb_stat pcb = {process_queue.front().name, current_time, current_time + process_queue.front().burst_time};
 
-    stats.push_back(pcb);
+    if(current.burst_time > this->time_quantum){
+      current.burst_time -= this->time_quantum;
+      process_queue.push(current);
+    } else {
+      stats.push_back(pcb);
+    }
     current_time += process_queue.front().burst_time;
     process_queue.pop();
   }

@@ -17,8 +17,8 @@
 struct pcb_stat
 {
   string id;
-  int tat;
-  int wt;
+  unsigned int tat;
+  unsigned int wt;
 };
 
 class SchedulerPriority : public Scheduler
@@ -27,7 +27,7 @@ private:
   // TODO: add necessary member variables here for your implementation
   vector<pcb_stat> stats;
   queue<PCB> process_queue;
-  int current_time = 0;
+  unsigned int current_time = 0;
 
   int sum_waiting_time = 0;
   int sum_turn_around_time = 0;

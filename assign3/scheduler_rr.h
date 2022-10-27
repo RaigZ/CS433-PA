@@ -17,17 +17,18 @@
 struct pcb_stat
 {
   string id;
-  int tat;
-  int wt;
+  unsigned int tat;
+  unsigned int wt;
 };
 
 class SchedulerRR : public Scheduler
 {
 private:
   // TODO: add necessary member variables here for your implementation
+  int time_quantum;
   vector<pcb_stat> stats;
   queue<PCB> process_queue;
-  int current_time = 0;
+  unsigned int current_time = 0;
 
   int sum_waiting_time = 0;
   int sum_turn_around_time = 0;
