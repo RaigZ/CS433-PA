@@ -1,6 +1,6 @@
 CS 433 Programming assignment 3
-Author: xxxxxx and xxxxxxx
-Date: xx/xx/20xx
+Author: Edgar Del Valle and Ragir Zebari
+Date: 11/04/2022
 Course: CS433 (Operating Systems)
 Description : test FCFS scheduling algorithm 
 =================================
@@ -31,8 +31,8 @@ T7 turn-around time = 145, waiting time = 115
 T8 turn-around time = 170, waiting time = 145
 Average turn-around time = 94.375, Average waiting time = 73.125
 CS 433 Programming assignment 3
-Author: xxxxxx and xxxxxxx
-Date: xx/xx/20xx
+Author: Edgar Del Valle and Ragir Zebari
+Date: 11/04/2022
 Course: CS433 (Operating Systems)
 Description : test SJF scheduling algorithm 
 =================================
@@ -63,8 +63,8 @@ T7 turn-around time = 170, waiting time = 140
 T8 turn-around time = 140, waiting time = 115
 Average turn-around time = 82.5, Average waiting time = 61.25
 CS 433 Programming assignment 3
-Author: xxxxxx and xxxxxxx
-Date: xx/xx/20xx
+Author: Edgar Del Valle and Ragir Zebari
+Date: 11/04/2022
 Course: CS433 (Operating Systems)
 Description : test Priority scheduling algorithm 
 =================================
@@ -95,8 +95,8 @@ T7 turn-around time = 160, waiting time = 130
 T8 turn-around time = 25, waiting time = 0
 Average turn-around time = 96.25, Average waiting time = 75
 CS 433 Programming assignment 3
-Author: xxxxxx and xxxxxxx
-Date: xx/xx/20xx
+Author: Edgar Del Valle and Ragir Zebari
+Date: 11/04/2022
 Course: CS433 (Operating Systems)
 Description : test RR scheduling algorithm 
 =================================
@@ -152,8 +152,8 @@ T7 turn-around time = 169, waiting time = 139
 T8 turn-around time = 170, waiting time = 145
 Average turn-around time = 143.125, Average waiting time = 121.875
 CS 433 Programming assignment 3
-Author: xxxxxx and xxxxxxx
-Date: xx/xx/20xx
+Author: Edgar Del Valle and Ragir Zebari
+Date: 11/04/2022
 Course: CS433 (Operating Systems)
 Description : test Priority RR scheduling algorithm 
 =================================
