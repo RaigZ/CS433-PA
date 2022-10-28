@@ -17,8 +17,8 @@
 struct pcb_stat
 {
   string id;
-  unsigned int tat;
   unsigned int wt;
+  unsigned int tat;
 };
 
 /**

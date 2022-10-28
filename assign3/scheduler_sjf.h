@@ -14,10 +14,11 @@
 #include "scheduler.h"
 #include <queue>
 
-struct pcb_stat {
+struct pcb_stat
+{
   string id;
-  unsigned int tat;
   unsigned int wt;
+  unsigned int tat;
 };
 
 class SchedulerSJF : public Scheduler {

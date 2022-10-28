@@ -1,5 +1,8 @@
 fcfs
 sjf
 rr
+priority
 *.o
 /.vscode
+.DS_STORE
+schedule2.txt
