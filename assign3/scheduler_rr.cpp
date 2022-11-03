@@ -27,7 +27,7 @@ void SchedulerRR::init(std::vector<PCB> &process_list)
 {
   for (int i = 0; i < process_list.size(); i++)
   {
-    process_queue.push(process_list[i]);
+    pcbs.push_back(process_list[i]);
   }
 }
 
@@ -44,18 +44,38 @@ void SchedulerRR::print_results()
 
 void SchedulerRR::simulate()
 {
-  while (!process_queue.empty())
+  vector<int> remaining_bt;
+  for (int i = 0; i < pcbs.size(); i++)
   {
-    PCB current = process_queue.front();
-    struct pcb_stat pcb = {process_queue.front().name, current_time, current_time + process_queue.front().burst_time};
+    remaining_bt.push_back(pcbs[i].burst_time);
+  }
+  while (1)
+  {
+    bool done = true;
+    for (int i = 0; i < pcbs.size(); i++)
+    {
+      if (remaining_bt[i] > 0)
+      {
+        done = false;
 
-    if(current.burst_time > this->time_quantum){
-      current.burst_time -= this->time_quantum;
-      process_queue.push(current);
-    } else {
-      stats.push_back(pcb);
+        if (remaining_bt[i] > time_quantum)
+        {
+          current_time += time_quantum;
+          remaining_bt[i] -= time_quantum;
+        }
+        else
+        {
+          struct pcb_stat pcb;
+          current_time += remaining_bt[i];
+          remaining_bt[i] = 0;
+          pcb.id = pcbs[i].name;
+          pcb.tat = current_time;
+          pcb.wt = pcb.tat - pcbs[i].burst_time;
+          stats.push_back(pcb);
+        }
+      }
     }
-    current_time += process_queue.front().burst_time;
-    process_queue.pop();
+    if (done == true)
+      break;
   }
 }

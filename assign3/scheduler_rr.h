@@ -27,7 +27,7 @@ private:
   // TODO: add necessary member variables here for your implementation
   int time_quantum;
   vector<pcb_stat> stats;
-  queue<PCB> process_queue;
+  vector<PCB> pcbs;
   unsigned int current_time = 0;
 
   int sum_waiting_time = 0;
