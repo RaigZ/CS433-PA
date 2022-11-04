@@ -28,7 +28,7 @@ void SchedulerPriority::init(std::vector<PCB> &process_list)
     PCB key = process_list[i];
     int j = i - 1;
 
-    while (key.priority < process_list[j].priority && j >= 0)
+    while (key.priority > process_list[j].priority && j >= 0)
     {
       process_list[j + 1] = process_list[j];
       j -= 1;
