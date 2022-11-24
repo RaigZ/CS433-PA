@@ -1,10 +1,12 @@
 /**
 * Assignment 4: Producer Consumer Problem
  * @file buffer.h
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief header file for the buffer class
  * @version 0.1
  */
+
+#include <vector>
 
 #ifndef ASSIGN4_BUFFER_H
 #define ASSIGN4_BUFFER_H
@@ -18,7 +20,8 @@ typedef int buffer_item;
 class Buffer {
 private:
     // TODO: Add your implementation of the buffer class here
-
+    int size;
+    std::vector<buffer_item> items;
 public:
     /**
      * @brief Construct a new Buffer object
