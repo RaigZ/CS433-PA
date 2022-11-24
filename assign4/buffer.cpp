@@ -9,10 +9,12 @@
 //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
 // Remember to add sufficient and clear comments to your code
 #include "buffer.h"
+#include <iostream>
 
 // TODO: Add your implementation of the buffer class here
 Buffer::Buffer(int size = 5){
   this->size = size;
+  this->counter = 0;
 }
 
 
@@ -26,7 +28,8 @@ bool Buffer::insert_item(buffer_item item){
   if(this->is_full()){
     return false;
   } else {
-    this->items.push(item);
+    this->items[counter] = item;
+    this->counter++;
     return true;
   }
 }
@@ -41,7 +44,10 @@ bool Buffer::remove_item(buffer_item *item){
   if (this->is_empty()){
     return false;
   } else {
-    this->items.pop();
+    this->items[0] = NULL;
+    for(int i = 1; i < this->get_count(); i++)
+      items[i - 1] = items[i];
+    this->counter--;
     return true;
   }
 }
@@ -59,7 +65,7 @@ int Buffer::get_size(){
  * @return the number of items in the buffer
  */
 int Buffer::get_count(){
-  return this->items.size();
+  return this->counter;
 }
 
 /**
@@ -67,19 +73,23 @@ int Buffer::get_count(){
  * @return true if the buffer is empty, else false
  */
 bool Buffer::is_empty(){
-  return this->items.empty();
+  return this->counter == 0;
 }
 /**
  * @brief Check if the buffer is full
  * @return true if the buffer is full, else false
  */
 bool Buffer::is_full(){
-  return this->items.size() == this->size;
+  return this->counter == this->size;
 }
 
 /**
  * @brief Print the buffer
  */
 void Buffer::print_buffer(){
-
+  std::cout << "[";
+  for(int i = 0; i < this->get_count(); i++){
+    std::cout << this->items[i] << ",";
+  }
+  std::cout << "]" << std::endl;
 }

@@ -13,6 +13,7 @@
 
 // Define the data type of the buffer items
 typedef int buffer_item;
+#define BUFFER_SIZE 5
 
 /**
  * @brief The bounded buffer class. The number of items in the buffer cannot exceed the size of the buffer.
@@ -21,7 +22,8 @@ class Buffer {
 private:
     // TODO: Add your implementation of the buffer class here
     int size;
-    std::queue<buffer_item> items;
+    int counter;
+    buffer_item items[BUFFER_SIZE];
 public:
     /**
      * @brief Construct a new Buffer object
