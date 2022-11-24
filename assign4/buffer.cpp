@@ -26,7 +26,7 @@ bool Buffer::insert_item(buffer_item item){
   if(this->is_full()){
     return false;
   } else {
-    this->items.push_back(item);
+    this->items.push(item);
     return true;
   }
 }
@@ -41,6 +41,7 @@ bool Buffer::remove_item(buffer_item *item){
   if (this->is_empty()){
     return false;
   } else {
+    this->items.pop();
     return true;
   }
 }
@@ -66,7 +67,7 @@ int Buffer::get_count(){
  * @return true if the buffer is empty, else false
  */
 bool Buffer::is_empty(){
-  return this->items.size() == 0;
+  return this->items.empty();
 }
 /**
  * @brief Check if the buffer is full

@@ -6,7 +6,7 @@
  * @version 0.1
  */
 
-#include <vector>
+#include <queue>
 
 #ifndef ASSIGN4_BUFFER_H
 #define ASSIGN4_BUFFER_H
@@ -21,7 +21,7 @@ class Buffer {
 private:
     // TODO: Add your implementation of the buffer class here
     int size;
-    std::vector<buffer_item> items;
+    std::queue<buffer_item> items;
 public:
     /**
      * @brief Construct a new Buffer object
