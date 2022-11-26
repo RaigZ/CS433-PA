@@ -12,11 +12,14 @@
 #include <iostream>
 
 // TODO: Add your implementation of the buffer class here
-Buffer::Buffer(int size = 5){
+Buffer::Buffer(int size){
   this->size = size;
   this->counter = 0;
 }
 
+Buffer::~Buffer(){
+  // delete[] this->items;
+}
 
 /**
  * @brief Insert an item into the buffer
@@ -44,10 +47,12 @@ bool Buffer::remove_item(buffer_item *item){
   if (this->is_empty()){
     return false;
   } else {
-    this->items[0] = NULL;
-    for(int i = 1; i < this->get_count(); i++)
-      items[i - 1] = items[i];
+    this->items[0] = 0;
     this->counter--;
+    if (this->get_count() > 0){
+      for(int i = 0; i < this->get_count(); i++)
+        items[i] = items[i + 1];
+    }
     return true;
   }
 }

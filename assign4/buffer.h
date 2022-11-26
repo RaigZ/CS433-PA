@@ -7,6 +7,7 @@
  */
 
 #include <queue>
+#include <pthread.h>
 
 #ifndef ASSIGN4_BUFFER_H
 #define ASSIGN4_BUFFER_H
@@ -24,7 +25,11 @@ private:
     int size;
     int counter;
     buffer_item items[BUFFER_SIZE];
+
+
 public:
+    pthread_mutex_t mutex;
+    pthread_attr_t attr;
     /**
      * @brief Construct a new Buffer object
      * @param size the size of the buffer
