@@ -60,36 +60,36 @@ void *consumer(void *param) {
 }
 
 int main(int argc, char *argv[]) {
+    int i;
     /* TODO: 1. Get command line arguments argv[1],argv[2],argv[3] */
     if(argc != 4){
         // std::cout << "Incorrect number of arguments." << std::end;
         return -1;
     }
 
-    pthread_t producer_thread;
-    pthread_t consumer_thread;
+    pthread_t producer_thread, consumer_thread;
 
-    int mtsleep = stoi(argv[1]);
-    int num_of_producers = stoi(argv[2]);
-    int num_of_consumers = stoi(argv[3]);
+    int mtsleep = atoi(argv[1]);
+    int num_of_producers = atoi(argv[2]);
+    int num_of_consumers = atoi(argv[3]);
     /* TODO: 2. Initialize buffer and synchronization primitives */
     pthread_mutex_init(&buffer.mutex, NULL);
-    pthread_attr_init(&buffer.attr);
     /* TODO: 3. Create producer thread(s).
      * You should pass an unique int ID to each producer thread, starting from 1 to number of threads */
-    int prod_counter = 0;
-    for (int i = 0; i < num_of_producers; i++){
-        pthread_create(&producer_thread, &buffer.attr, producer, (void*) (size_t) prod_counter);
+    for (i = 1; i <= num_of_producers; i++){
+        pthread_create(&producer_thread, NULL, producer, (void*) (size_t) &i);
+        // pthread_create(&producer_thread, &buffer.attr, producer, NULL);
     }
-    /* TODO: 4. Create consumer thread(s) */
-    int con_counter = 0;
-    for (int i = 0; i < num_of_consumers; i++){
-        pthread_create(&consumer_thread, &buffer.attr, producer, (void*) (size_t) con_counter);
+    // /* TODO: 4. Create consumer thread(s) */
+    for (i = 1; i <= num_of_consumers; i++){
+        // pthread_create(&consumer_thread, NULL, consumer, NULL);
+        pthread_create(&consumer_thread, NULL, consumer, (void*) (size_t) &i);
     }
     /* TODO: 5. Main thread sleep */
-    // pthread_join(producer_thread, NULL);
-    // pthread_join(consumer_thread, NULL);
+    pthread_join(producer_thread, NULL);
+    pthread_join(consumer_thread, NULL);
     usleep(1000 * mtsleep);
     /* TODO: 6. Exit */
+    pthread_mutex_destroy(&buffer.mutex);
     std::cout << "Exit program." << std::endl;
 }

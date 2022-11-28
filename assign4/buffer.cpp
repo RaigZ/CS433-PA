@@ -47,12 +47,11 @@ bool Buffer::remove_item(buffer_item *item){
   if (this->is_empty()){
     return false;
   } else {
-    this->items[0] = 0;
-    this->counter--;
     if (this->get_count() > 0){
       for(int i = 0; i < this->get_count(); i++)
         items[i] = items[i + 1];
     }
+    this->counter--;
     return true;
   }
 }
@@ -93,8 +92,9 @@ bool Buffer::is_full(){
  */
 void Buffer::print_buffer(){
   std::cout << "[";
-  for(int i = 0; i < this->get_count(); i++){
+  for(int i = 0; i < this->get_count() - 1; i++){
     std::cout << this->items[i] << ",";
   }
+    std::cout << this->items[this->get_count()];
   std::cout << "]" << std::endl;
 }
