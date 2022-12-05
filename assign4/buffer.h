@@ -20,16 +20,15 @@ typedef int buffer_item;
  * @brief The bounded buffer class. The number of items in the buffer cannot exceed the size of the buffer.
  */
 class Buffer {
-private:
-    // TODO: Add your implementation of the buffer class here
-    int size;
-    int counter;
-    buffer_item items[BUFFER_SIZE];
-
+private: 
+    int size; // Size of the buffer
+    int counter; // Current number of items in buffer
+    int front, rear; //Start and end of the array
+    buffer_item items[BUFFER_SIZE]; // Array of buffer items
 
 public:
+    // Mutex lock
     pthread_mutex_t mutex;
-    pthread_attr_t attr;
     /**
      * @brief Construct a new Buffer object
      * @param size the size of the buffer

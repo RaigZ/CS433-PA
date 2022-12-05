@@ -27,7 +27,6 @@ struct pcb_stat
 class SchedulerFCFS : public Scheduler
 {
 private:
-  // TODO: add necessary member variables here for your implementation
   vector<pcb_stat> stats;
   queue<PCB> process_queue;
   unsigned int current_time = 0;

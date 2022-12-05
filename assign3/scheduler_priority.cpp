@@ -10,9 +10,6 @@
 
 #include "scheduler_priority.h"
 
-// TODO: add implementation of SchedulerFCFS constructor, destrcutor and
-// member functions init, print_results, and simulate here
-
 SchedulerPriority::SchedulerPriority()
 {
 }
@@ -21,13 +18,19 @@ SchedulerPriority::~SchedulerPriority()
 {
 }
 
+/**
+ * @brief Initialize Priority Scheduler
+ * @param process_list: The list of processes that have been read into memory.
+ */
 void SchedulerPriority::init(std::vector<PCB> &process_list)
 {
+  // Sort the processes using insertion sort based on the priority level
   for (int i = 1; i < process_list.size(); i++)
   {
     PCB key = process_list[i];
     int j = i - 1;
 
+    // The largest priority will be the highest
     while (key.priority > process_list[j].priority && j >= 0)
     {
       process_list[j + 1] = process_list[j];
@@ -42,6 +45,9 @@ void SchedulerPriority::init(std::vector<PCB> &process_list)
   }
 }
 
+/**
+ * @brief Print the turn around time and waiting time along with the averages.
+ */
 void SchedulerPriority::print_results()
 {
   for (int i = 0; i < stats.size(); i++)
@@ -53,6 +59,9 @@ void SchedulerPriority::print_results()
   std::cout << "Average turn-around time = " << sum_turn_around_time * 1.0 / stats.size() << ", Average waiting time = " << sum_waiting_time * 1.0 / stats.size() << std::endl;
 }
 
+/**
+ * @brief Simulate each process being scheduled.
+ */
 void SchedulerPriority::simulate()
 {
   while (!process_queue.empty())

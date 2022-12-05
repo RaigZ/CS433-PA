@@ -10,9 +10,6 @@
 
 #include "scheduler_fcfs.h"
 
-// TODO: add implementation of SchedulerFCFS constructor, destrcutor and
-// member functions init, print_results, and simulate here
-
 SchedulerFCFS::SchedulerFCFS()
 {
 }
@@ -21,14 +18,22 @@ SchedulerFCFS::~SchedulerFCFS()
 {
 }
 
+/**
+ * @brief Initialize FCFS Scheduler
+ * @param process_list: The list of processes that have been read into memory.
+ */
 void SchedulerFCFS::init(std::vector<PCB> &process_list)
 {
+  // Push every process into a queue
   for (int i = 0; i < process_list.size(); i++)
   {
     process_queue.push(process_list[i]);
   }
 }
 
+/**
+ * @brief Print the turn around time and waiting time along with the averages.
+ */
 void SchedulerFCFS::print_results()
 {
   for (int i = 0; i < stats.size(); i++)
@@ -40,10 +45,15 @@ void SchedulerFCFS::print_results()
   std::cout << "Average turn-around time = " << sum_turn_around_time * 1.0 / stats.size() << ", Average waiting time = " << sum_waiting_time * 1.0 / stats.size() << std::endl;
 }
 
+/**
+ * @brief Simulate each process being scheduled.
+ */
 void SchedulerFCFS::simulate()
 {
+  // While there are still processes to go through.
   while (!process_queue.empty())
   {
+    // Initialize a pcb_stat struct to keep track of the process waiting time and turn around time.
     struct pcb_stat pcb = {process_queue.front().name, current_time, current_time + process_queue.front().burst_time};
 
     stats.push_back(pcb);
