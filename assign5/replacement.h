@@ -1,7 +1,7 @@
 /**
 * Assignment 5: Page replacement algorithms
  * @file replacement.h
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief A base class for different page replacement algorithms.
  * @version 0.1
  */

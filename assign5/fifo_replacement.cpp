@@ -1,7 +1,7 @@
 /**
 * Assignment 5: Page replacement algorithms
  * @file fifo_replacement.cpp
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief A class implementing the FIFO page replacement algorithms
  * @version 0.1
  */

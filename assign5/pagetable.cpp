@@ -1,7 +1,7 @@
 /**
 * Assignment 5: Page replacement algorithms
  * @file pagetable.cpp
- * @author ??? (TODO: your name)
+ * @author Edgar Del Valle and Ragir Zebari
  * @brief This class represents a traditional pagetable data structure.
  * @version 0.1
  */
